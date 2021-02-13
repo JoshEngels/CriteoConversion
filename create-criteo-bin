@@ -1,1 +1,8 @@
 #!/bin/bash
+ for i in {0..23}; 
+ do 
+ wget "http://azuremlsampleexperiments.blob.core.windows.net/criteo/day_$i.gz";
+ gunzip "day_$i.gz"
+ ./convert "day_$i" criteo.bin
+ rm "day_$i"
+ done
