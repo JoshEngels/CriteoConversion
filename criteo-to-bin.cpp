@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-  
+
   // Read in raw data
   ifstream input(argv[1], ios::binary | ios::ate);
   streamsize size = input.tellg();

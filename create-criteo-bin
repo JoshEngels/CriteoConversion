@@ -1,8 +1,14 @@
 #!/bin/bash
- for i in {0..23}; 
- do 
- wget "http://azuremlsampleexperiments.blob.core.windows.net/criteo/day_$i.gz";
- gunzip "day_$i.gz"
- ./convert "day_$i" criteo.bin
- rm "day_$i"
- done
+
+# This file gets all of the criteo files and creates a binary version of the data
+# that can later be read. Need about 650GB of disk space, 20GB of RAM.
+
+make all
+for i in {0..23}; 
+do 
+        echo "Starting file $i"
+        wget "http://azuremlsampleexperiments.blob.core.windows.net/criteo/day_$i.gz";
+        gunzip "day_$i.gz"
+        ./convert "day_$i" criteo.bin
+        rm "day_$i"
+done
